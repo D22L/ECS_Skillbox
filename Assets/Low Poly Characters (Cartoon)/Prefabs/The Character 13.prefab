@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1944639348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1944639349}
+  m_Layer: 0
+  m_Name: gunPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1944639349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944639348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.61, z: 0.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9046933872434204384}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598861003694598069
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +136,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 830d65e8817c54cfdb8149fab0e2911d, type: 2}
+  - {fileID: 2100000, guid: ed566743e5bb3406488e664507552271, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,6 +232,7 @@ Transform:
   m_Children:
   - {fileID: 5074388087602235589}
   - {fileID: 3509204065826174174}
+  - {fileID: 1944639349}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -270,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pfbBullet: {fileID: -3766071052500451323, guid: 75ce089f9bb32ae40a16ac67befc6799, type: 3}
+  _gunPoint: {fileID: 1944639349}
   _shootDelay: 0.1
 --- !u!114 &350861093
 MonoBehaviour:
@@ -311,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0056d00788a3be4194de7387d2f0390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healt: 100
+  _maxHealth: 100
 --- !u!1 &9046933872434238082
 GameObject:
   m_ObjectHideFlags: 0

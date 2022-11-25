@@ -11,12 +11,12 @@ namespace ECS_Project
         [field: SerializeField] public Collider collider { get; private set; }
         public List<Collider> Collisions { get; set; } = new List<Collider>();
         [field: SerializeField] public List<MonoBehaviour> collisionAction { get; set; } = new List<MonoBehaviour>();
-        private List<IAbilityTarget> collisionAbilities = new List<IAbilityTarget>();
+        private List<IAbility> collisionAbilities = new List<IAbility>();
         private void Start()
         {
             foreach (MonoBehaviour a in collisionAction)
             {
-                if (a is IAbilityTarget abilityTarget) collisionAbilities.Add(abilityTarget);
+                if (a is IAbility ability) collisionAbilities.Add(ability);
                 else Debug.LogError("collision action must derive from IAbilityTarget");
             }
         }
@@ -67,8 +67,11 @@ namespace ECS_Project
         {
             foreach (var a in collisionAbilities)
             {
-                a.Targets = new List<GameObject>();
-                Collisions.ForEach(x => a.Targets.Add(x.gameObject));
+                if (a is IAbilityTarget abilityTarget)
+                {
+                    abilityTarget.Targets = new List<GameObject>();
+                    Collisions.ForEach(x => abilityTarget.Targets.Add(x.gameObject));
+                }
                 a.Execute();
             }
         }
