@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 7609104020060067750}
   - component: {fileID: 350861093}
   - component: {fileID: 1636067501}
-  - component: {fileID: 1636067500}
+  - component: {fileID: 8952005319672315296}
   m_Layer: 0
   m_Name: The Character 13
   m_TagString: Untagged
@@ -299,7 +299,7 @@ CapsuleCollider:
   m_Height: 1.5005952
   m_Direction: 1
   m_Center: {x: 0.008431494, y: 0.7596051, z: 0}
---- !u!114 &1636067500
+--- !u!114 &8952005319672315296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,10 +308,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9046933872434238080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ea6d27544f001247bdf3fb47fea9a58, type: 3}
+  m_Script: {fileID: 11500000, guid: e0056d00788a3be4194de7387d2f0390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <collider>k__BackingField: {fileID: 1636067501}
+  _healt: 100
 --- !u!1 &9046933872434238082
 GameObject:
   m_ObjectHideFlags: 0

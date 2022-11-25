@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -5,9 +6,21 @@ using UnityEngine.Tilemaps;
 
 namespace ECS_Project
 {
-    public class CollisionAbility : MonoBehaviour, IAbility, IConvertGameObjectToEntity
+    public class CollisionAbility : MonoBehaviour, IConvertGameObjectToEntity, IAbility
     {
         [field: SerializeField] public Collider collider { get; private set; }
+        public List<Collider> Collisions { get; set; } = new List<Collider>();
+        [field: SerializeField] public List<MonoBehaviour> collisionAction { get; set; } = new List<MonoBehaviour>();
+        private List<IAbilityTarget> collisionAbilities = new List<IAbilityTarget>();
+        private void Start()
+        {
+            foreach (MonoBehaviour a in collisionAction)
+            {
+                if (a is IAbilityTarget abilityTarget) collisionAbilities.Add(abilityTarget);
+                else Debug.LogError("collision action must derive from IAbilityTarget");
+            }
+        }
+
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
             float3 position = gameObject.transform.position;
@@ -52,8 +65,14 @@ namespace ECS_Project
 
         public void Execute()
         {
-            Debug.Log("Hit");
+            foreach (var a in collisionAbilities)
+            {
+                a.Targets = new List<GameObject>();
+                Collisions.ForEach(x => a.Targets.Add(x.gameObject));
+                a.Execute();
+            }
         }
+  
     }
 
     public struct ActorColliderData : IComponentData

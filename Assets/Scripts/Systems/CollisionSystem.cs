@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -11,6 +10,7 @@ namespace ECS_Project
     {
         private EntityQuery _query;
         private Collider[] _results = new Collider[50]; 
+
         protected override void OnCreate()
         {
             _query = GetEntityQuery(
@@ -18,14 +18,14 @@ namespace ECS_Project
                 ComponentType.ReadOnly<Transform>()
                 );
         }
+
         protected override void OnUpdate()
         {
-            Entities.With(_query).ForEach((Entity entity, CollisionAbility ability, ref ActorColliderData colliderData) => {
-
-                var go = ability.gameObject;
-                float3 position = ability.transform.position;
-                var rotation = ability.transform.rotation;
-
+            Entities.With(_query).ForEach((Entity entity, CollisionAbility collisionAbility, ref ActorColliderData colliderData) => 
+            {
+                float3 position = collisionAbility.transform.position;
+                var rotation = collisionAbility.transform.rotation;
+                collisionAbility.Collisions?.Clear();
                 int size = 0;
 
                 switch (colliderData.colliderType)
@@ -51,7 +51,12 @@ namespace ECS_Project
 
                 if (size > 0)
                 {
-                    ability.Execute();
+                    foreach (var r in _results)
+                    {
+                        if(r != null) collisionAbility.Collisions?.Add(r);
+                    }
+                    
+                    collisionAbility.Execute();                   
                 }
 
             });
