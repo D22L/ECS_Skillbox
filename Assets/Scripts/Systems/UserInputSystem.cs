@@ -8,6 +8,7 @@ namespace ECS_Project
     public class UserInputSystem : ComponentSystem
     {
         private EntityQuery _query;
+        private EntityQuery _queryLogin;
 
         private InputAction _inputAction;
         private InputAction _shootAction;
@@ -17,9 +18,11 @@ namespace ECS_Project
         private float _shootInput;
         private float _leapForwardInput;
 
+        private bool isAuthorized;
         protected override void OnCreate()
         {
             _query = GetEntityQuery(ComponentType.ReadOnly<InputData>());
+            _queryLogin = GetEntityQuery(ComponentType.ReadOnly<LoginData>());
         }
         protected override void OnStartRunning()
         {
@@ -48,6 +51,12 @@ namespace ECS_Project
             _leapForwardAction.started += context => { _leapForwardInput = context.ReadValue<float>(); };
             _leapForwardAction.canceled += context => { _leapForwardInput = context.ReadValue<float>(); };
             _leapForwardAction.Enable();
+
+            Entities.With(_queryLogin).ForEach(
+                (Entity entity, LoginButtonComponent loginComponent) =>
+                {
+                    loginComponent.OnAuthorizated += () => isAuthorized = true;
+                });
         }
 
         protected override void OnStopRunning()
@@ -55,10 +64,18 @@ namespace ECS_Project
             _inputAction.Disable();
             _shootAction.Disable();
             _leapForwardAction.Disable();
+
+            Entities.With(_queryLogin).ForEach(
+               (Entity entity, LoginButtonComponent loginComponent) =>
+               {
+                   loginComponent.OnAuthorizated -= () => isAuthorized = true;
+               });
         }
 
         protected override void OnUpdate()
         {
+            if (!isAuthorized) return;
+
             Entities.With(_query).ForEach(
                 (Entity entity, ref InputData inputData) =>
                 {

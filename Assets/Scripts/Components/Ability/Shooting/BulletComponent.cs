@@ -31,7 +31,7 @@ namespace ECS_Project
                 if (TryGetComponent(out RicochetAbility ricochetAbility))
                 {
                     var wallnormal = collision.contacts[0].normal;
-                    _rb.velocity = Vector3.Reflect(_direction, wallnormal) * force;
+                      _rb.velocity = Vector3.Reflect(_direction, wallnormal) * force;
                 }
                 else Destroy(this.gameObject);
             }

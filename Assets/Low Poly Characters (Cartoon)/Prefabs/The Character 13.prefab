@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 350861093}
   - component: {fileID: 1636067501}
   - component: {fileID: 8952005319672315296}
+  - component: {fileID: 8635475669561777875}
   m_Layer: 0
   m_Name: The Character 13
   m_TagString: Untagged
@@ -345,6 +346,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+--- !u!114 &8635475669561777875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9046933872434238080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15e3a90b4df195439d1bf0e9d6f5076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9046933872434238082
 GameObject:
   m_ObjectHideFlags: 0
