@@ -79,7 +79,7 @@ namespace ECS_Project
             Entities.With(_query).ForEach(
                 (Entity entity, ref InputData inputData) =>
                 {
-                    inputData.input = _moveInput;
+                    inputData.move = _moveInput;
                     inputData.shoot = _shootInput;
                     inputData.leapForward = _leapForwardInput;
                 });

@@ -19,7 +19,7 @@ namespace ECS_Project
             Entities.With(_query).ForEach((Entity entity, Transform transform, ref InputData inputData, ref MoveData moveData) =>
             {
                 var pos = transform.position;               
-                pos += new Vector3(inputData.input.x, 0, inputData.input.y) * moveData.Speed;
+                pos += new Vector3(inputData.move.x, 0, inputData.move.y) * moveData.Speed;
                 transform.position = pos;
             });
             

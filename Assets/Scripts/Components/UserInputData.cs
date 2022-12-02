@@ -23,11 +23,12 @@ namespace ECS_Project
 
     public struct InputData : IComponentData
     {
-        public float2 input;
+        public float2 move;
         public float shoot;
         public float leapForward;
 
-        public Vector3 inputV3 => new Vector3(input.x,0,input.y);
+        public Vector3 moveV3 => new Vector3(move.x,0,move.y);
+        public bool isMove => move.x != 0 || move.y != 0;
     }
     public struct ShootData : IComponentData { }
     public struct LeapForwardData : IComponentData { }
