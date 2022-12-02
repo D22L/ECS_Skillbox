@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Unity.Entities;
 
 namespace ECS_Project
@@ -19,9 +16,20 @@ namespace ECS_Project
 
         protected override void OnUpdate()
         {
-            Entities.With(_entityQuery).ForEach((Entity entity, AnimStateManager animManager, ref InputData inputData) => {
-                if (inputData.isMove) animManager.Play<WalkAnimStateComponent>();
-                else animManager.Play<IdleAnimStateComponent>();
+            Entities.With(_entityQuery).ForEach((Entity entity, AnimStateManager animManager, ref InputData inputData) =>
+            {
+                if (inputData.isMove)
+                {
+                    if (inputData.shoot > 0) animManager.Play<ShootAnimStateComponent>();
+                    else animManager.Play<WalkAnimStateComponent>();
+                }
+                else
+                {
+                    if (inputData.shoot > 0) animManager.Play<StayShootAnimStateComponent>();
+                    else animManager.Play<IdleAnimStateComponent>();
+                }
+
+
             });
         }
     }
