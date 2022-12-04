@@ -1739,6 +1739,7 @@ GameObject:
   - component: {fileID: 1238463681}
   - component: {fileID: 1238463682}
   - component: {fileID: 1238463684}
+  - component: {fileID: 3252626536996209745}
   - component: {fileID: 1238463690}
   - component: {fileID: 1238463683}
   - component: {fileID: 1238463689}
@@ -1843,6 +1844,7 @@ MonoBehaviour:
   - {fileID: 1238463682}
   - {fileID: 1238463681}
   - {fileID: 1238463680}
+  - {fileID: 3252626536996209745}
 --- !u!114 &1238463680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1898,6 +1900,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AnimStateName>k__BackingField: Idle
+  transitionDuration: 0.01
+--- !u!114 &3252626536996209745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066048166283207022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac1d1a3a24c84048a89b7db244cfb54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AnimStateName>k__BackingField: Death
   transitionDuration: 0.01
 --- !u!114 &1238463690
 MonoBehaviour:

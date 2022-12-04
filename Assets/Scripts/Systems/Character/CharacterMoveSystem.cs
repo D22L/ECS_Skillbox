@@ -20,8 +20,7 @@ namespace ECS_Project
             {
                 var pos = transform.position;               
                 pos += new Vector3(inputData.move.x, 0, inputData.move.y) * moveData.Speed;
-                transform.position = pos;
-                Debug.Log(moveData.Speed);
+                transform.position = pos;              
             });
             
         }
