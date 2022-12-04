@@ -17,7 +17,7 @@ namespace ECS_Project
         }
         public void TakeDamage(int damage)
         {
-            if (CurrentHealth >= damage)
+            if (CurrentHealth > 0)
             {
                 CurrentHealth -= damage;
                 CurrentHealth = Mathf.Clamp(CurrentHealth, 0, _maxHealth);
