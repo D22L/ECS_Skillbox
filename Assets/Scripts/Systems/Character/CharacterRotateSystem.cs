@@ -19,10 +19,10 @@ namespace ECS_Project
         {
             Entities.With(_query).ForEach((Entity entity, Transform transform, ref InputData inputData, ref RotateData rotateData ) => {
 
-                if (inputData.moveV3.magnitude > 0)
+                if (inputData.isMove)
                 {
                     var targetRotate = Quaternion.LookRotation(inputData.moveV3, Vector3.up);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotate, rotateData.TurnSpeed);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotate, rotateData.TurnSpeed * Time.DeltaTime);
                 }
                  
             });

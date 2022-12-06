@@ -19,8 +19,7 @@ namespace ECS_Project
         {
             Entities.With(_entityQuery).ForEach((Entity entity, BehaviorManager behaviorManager) => {
 
-                behaviorManager.CurrentBehavior?.Behave();
-                Debug.Log(behaviorManager?.CurrentBehavior);
+                behaviorManager.CurrentBehavior?.Behave();               
             });
         }
     }

@@ -26,7 +26,7 @@ namespace ECS_Project
         }
         protected override void OnStartRunning()
         {
-            _inputAction = new InputAction("move", binding: "<Gamepad>/rightStick");
+            _inputAction = new InputAction("move", binding: "<Gamepad>/leftStick");
             _inputAction.AddCompositeBinding("Dpad")
                 .With("Up", binding: "<Keyboard>/w")
                 .With("Down", binding: "<Keyboard>/s")
@@ -40,6 +40,7 @@ namespace ECS_Project
 
             ///// shooting
             _shootAction = new InputAction("shoot", binding: "<Keyboard>/space");
+            _shootAction.AddBinding("<Gamepad>/buttonSouth");
             _shootAction.performed += context => { _shootInput = context.ReadValue<float>(); };
             _shootAction.started += context => { _shootInput = context.ReadValue<float>(); };
             _shootAction.canceled += context => { _shootInput = context.ReadValue<float>(); };
@@ -74,7 +75,7 @@ namespace ECS_Project
 
         protected override void OnUpdate()
         {
-            if (!isAuthorized) return;
+            //if (!isAuthorized) return;
 
             Entities.With(_query).ForEach(
                 (Entity entity, ref InputData inputData) =>
